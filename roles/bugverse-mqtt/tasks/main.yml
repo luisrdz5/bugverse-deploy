@@ -1,0 +1,13 @@
+---
+- include: deps.yml
+- name: Copy bugverse-mqtt
+  copy:
+   src=bugverse-mqtt
+   dest=/usr/local/src
+   mode=u=rwx,g=rwx,o=rx
+- name: Running npm install
+  command: npm install
+    chdir=/usr/local/src/bugverse-mqtt
+    create=/usr/local/src/bugverse-mqtt/node_modules
+- name: Run npm start
+  command: npm start

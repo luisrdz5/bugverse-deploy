@@ -1,0 +1,14 @@
+---
+- include: deps.yml
+- name: Copy bugverse-db
+  copy:
+    src=bugverse-db
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Run npm install
+  command: npm install
+    chdir=/usr/local/src/bugverse-db
+    creates=/usr/local/src/bugverse-db/node_modules
+- name: Setup Database
+  command: npm run setup -- --yes
+    chdir=/usr/local/src/bugverse-db

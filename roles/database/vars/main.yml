@@ -1,0 +1,22 @@
+postgresql_version: 9.3
+postgresql_encoding: 'UTF-8'
+postgresql_locale: 'es_MX.UTF-8'
+postgresql_ctype: 'es_MX.UTF-8'
+postgresql_admin_user: 'postgres'
+postgresql_databases:
+  name: bugverse
+  owner: postgres
+  hstore: yes
+  encoding: 'UTF-8'   # override global {{ postgresql_encoding }} variable per database
+  lc_collate: 'es_MX.UTF-8'   # override global {{ postgresql_locale }} variable per database
+  lc_ctype: 'es_MX.UTF-8'     # override global {{ postgresql_ctype }} variable per database
+postgresql_users:
+  name: bug
+  pass: bugv
+  encripted: no
+postgresql_user_privileges:
+  name: bug
+  db: bugverse
+  priv: "ALL"
+  role_attr_flags: "CREATEDB"
+
